@@ -46,7 +46,7 @@ class CarRentalSystem:
             if choice == 1:
                 print("Elérhető autók:")
                 for car in self._rental_service.cars:
-                    print(f"{car.plate} – {car.car_type}, {car.rental_fee} HUF")
+                    print(f"{car.plate} – {car.car_type}, {car.rental_fee} Ft")
 
             elif choice == 2:
                 print("Aktuális foglalások:")
@@ -63,11 +63,11 @@ class CarRentalSystem:
 
                 print("Szabad autók ezen a napon:")
                 for car in available:
-                    print(f"  {car.plate} – {car.car_type}, {car.rental_fee} HUF")
+                    print(f"  {car.plate} – {car.car_type}, {car.rental_fee} Ft")
 
                 plate = self._prompt_for_plate(available, rental_date, for_booking=True)
                 self._rental_service.rent_by_plate(plate, rental_date)
-                print(f"Sikeres foglalás: {plate} – {rental_date}")
+                print(f"Sikeres foglalás: {plate} – {rental_date} - {car.rental_fee} Ft")
 
             elif choice == 4:
                 rental_date = self._prompt_for_date("Adja meg a foglalás dátumát (YYYY-MM-DD): ")
@@ -79,7 +79,7 @@ class CarRentalSystem:
 
                 print("Foglalt autók ezen a napon:")
                 for car in busy:
-                    print(f"  {car.plate} – {car.car_type}, {car.rental_fee} HUF")
+                    print(f"  {car.plate} – {car.car_type}, {car.rental_fee} Ft")
 
                 plate = self._prompt_for_plate(busy, rental_date, for_booking=False)
                 self._rental_service.unrent_by_plate(plate, rental_date)
